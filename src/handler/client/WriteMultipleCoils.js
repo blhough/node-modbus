@@ -39,6 +39,10 @@ module.exports = stampit()
         basePdu.writeUInt8(fc, 0)
         basePdu.writeUInt16BE(startAddress, 1)
 
+        if (coils instanceof ArrayBuffer) {
+          coils = Buffer.from(coils);
+        }
+
         if (coils instanceof Buffer) {
           basePdu.writeUInt16BE(N, 3)
           basePdu.writeUInt8(coils.length, 5)

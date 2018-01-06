@@ -39,6 +39,10 @@ module.exports = stampit()
         basePdu.writeUInt8(fc)
         basePdu.writeUInt16BE(startAddress, 1)
 
+        if (register instanceof ArrayBuffer) {
+          register = Buffer.from(register);
+        }
+
         if (register instanceof Buffer) {
           if (register.length / 2 > 0x007b) {
             reject()
