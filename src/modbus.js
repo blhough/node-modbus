@@ -44,3 +44,7 @@ fs.readdirSync(path.join(__dirname, '/handler/server'))
     exports.server.tcp.complete = exports.server.tcp.complete.compose(require('./handler/server/' + file))
     exports.server.handler[file.substr(0, file.length - 3)] = require('./handler/server/' + file)
   })
+
+exports.buffer = function (size) {
+  return Buffer.alloc(size, 0)
+}
