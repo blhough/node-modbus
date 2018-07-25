@@ -48,7 +48,7 @@ module.exports = stampit()
             reject()
           }
 
-          basePdu.writeUInt16BE(register.length / 2, 3)
+          basePdu.writeUInt16BE(Math.ceil(register.length / 2), 3)
           basePdu.writeUInt8(register.length, 5)
 
           pdu = Buffer.concat([basePdu, register])
