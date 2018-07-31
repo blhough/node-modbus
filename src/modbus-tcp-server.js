@@ -37,6 +37,9 @@ module.exports = stampit()
           return false
         }
 
+        this.emit('connection', node)
+        s.on('end', () => this.emit('disconnect', node))
+
         clients.push(s)
         initiateSocket(s)
       }.bind(this))
